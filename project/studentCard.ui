@@ -62,7 +62,7 @@
     </font>
    </property>
    <property name="text">
-    <string>로그아웃</string>
+    <string>종료</string>
    </property>
   </widget>
   <widget class="QLabel" name="lblName">
@@ -198,7 +198,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>홈으로</string>
+    <string>로그아웃</string>
    </property>
   </widget>
  </widget>

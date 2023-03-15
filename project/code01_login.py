@@ -13,13 +13,13 @@ class qtApp(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('./project/login.ui', self)
-        # self.setWindowIcon(QIcon('./studyPyQt/address-book.png'))
+        self.setWindowIcon(QIcon('./이미지스/login.png'))
         self.setWindowTitle('학생증 v0.5')
 
         # self.initDB()       # DB초기화
 
         # 버튼 시그널/슬롯함수 지정
-        self.btnNew.clicked.connect(self.btnNewClicked)
+        # self.btnNew.clicked.connect(self.btnNewClicked)
  
     # def btnDelClicked(self):
     #     if self.curIdx == 0:

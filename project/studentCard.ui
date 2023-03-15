@@ -28,7 +28,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>학생증</string>
   </property>
   <widget class="QLabel" name="lblQrCode">
    <property name="geometry">
@@ -49,7 +49,7 @@
   <widget class="QPushButton" name="btnLogout">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>130</x>
      <y>310</y>
      <width>71</width>
      <height>31</height>
@@ -186,6 +186,19 @@
    </property>
    <property name="text">
     <string>전공</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnHome">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>310</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>홈으로</string>
    </property>
   </widget>
  </widget>

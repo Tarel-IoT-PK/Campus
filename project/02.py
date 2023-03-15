@@ -29,6 +29,18 @@ class qtStudentCard(QWidget):
         uic.loadUi('./Project/studentCard.ui', self)   
         self.show()    
 
+        self.btnClose.clicked.connect(self.btnCloseClicked)
+        self.btnLogout.clicked.connect(self.btnLogoutClicked)
+    
+    def btnCloseClicked(self):
+        self.close()
+
+    def btnLogoutClicked(self):
+        super().__init__()
+        uic.loadUi('./Project/login.ui', self)   
+        self.hide()
+        self.show()
+
 class qtFindID(QWidget):
     def __init__(self):
        super().__init__()

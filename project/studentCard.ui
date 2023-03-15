@@ -46,7 +46,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnLogout">
+  <widget class="QPushButton" name="btnClose">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -188,7 +188,7 @@
     <string>전공</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnHome">
+  <widget class="QPushButton" name="btnLogout">
    <property name="geometry">
     <rect>
      <x>50</x>

@@ -76,15 +76,15 @@
      </font>
     </property>
     <property name="text">
-     <string>password</string>
+     <string>비밀번호</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>30</y>
-      <width>56</width>
+      <width>50</width>
       <height>21</height>
      </rect>
     </property>
@@ -95,7 +95,7 @@
      </font>
     </property>
     <property name="text">
-     <string>ID(학번)</string>
+     <string>학번</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

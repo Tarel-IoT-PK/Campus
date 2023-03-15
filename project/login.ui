@@ -101,7 +101,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lblID">
+   <widget class="QLineEdit" name="txtID">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -111,7 +111,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lblPW">
+   <widget class="QLineEdit" name="txtPW">
     <property name="geometry">
      <rect>
       <x>81</x>

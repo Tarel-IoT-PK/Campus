@@ -10,8 +10,10 @@ class qtApp(QWidget):
         uic.loadUi('./Project/login.ui', self)
 
         self.btnlogin.clicked.connect(self.btnloginClicked)
+#===================================================================================
         self.btnID.clicked.connect(self.btnIDClicked)
         self.btnPW.clicked.connect(self.btnPWClicked)
+#===================================================================================
         
     def btnloginClicked(self):
         self.hide()

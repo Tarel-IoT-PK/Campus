@@ -146,7 +146,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="txtName">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -162,7 +162,7 @@
     <string>이름</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="txtstudentID">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -175,7 +175,7 @@
     <string>학번</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="txtMajor">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -201,6 +201,26 @@
     <string>로그아웃</string>
    </property>
   </widget>
+  <widget class="QTableWidget" name="tblstudentCard">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <zorder>tblstudentCard</zorder>
+  <zorder>lblQrCode</zorder>
+  <zorder>btnClose</zorder>
+  <zorder>lblName</zorder>
+  <zorder>lblID</zorder>
+  <zorder>lblMajor</zorder>
+  <zorder>txtName</zorder>
+  <zorder>txtstudentID</zorder>
+  <zorder>txtMajor</zorder>
+  <zorder>btnLogout</zorder>
  </widget>
  <resources/>
  <connections/>

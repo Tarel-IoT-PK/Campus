@@ -52,7 +52,7 @@ class qtStudentCard(QWidget):
                         , studentName
                         , birthday
                      FROM studenttbl
-                    WHERE studentID = 20214210;''' 
+                    WHERE studentID = 20214210;'''  # 학번 where 절 고치기 해야함!!!
         cur.execute(query)
         rows = cur.fetchall()
 
@@ -84,6 +84,8 @@ class qtStudentCard(QWidget):
         self.tblstudentCard.hide()
 
         self.txtName.setText(str(studentName))
+        self.txtstudentID.setText(str(studentId))
+        self.txtMajor.setText(str(birthday))
 
 class qtFindID(QWidget):
     def __init__(self):

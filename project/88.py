@@ -36,7 +36,7 @@ class qtStudentCard(QWidget):
         self.btnLogout.clicked.connect(self.btnLogoutClicked)
 
         
-        # self.txtName.returnPressed.connect(self.makeQRcode)
+        self.txtName.returnPressed.connect(self.makeQRcode)
     
     def btnCloseClicked(self):
         self.close()
@@ -90,14 +90,14 @@ class qtStudentCard(QWidget):
         self.txtstudentID.setText(str(studentId))
         self.txtMajor.setText(str(birthday))
     
-    # def makeQRcode(self):
+    def makeQRcode(self):
         
-    #     data = self.txtName.text()
-    #     qr_img = qrcode.make(data)  # pixmap() 함수생성
-    #     qr_img.save('./studyPython/Name.png')
+        data = self.txtName.text()
+        qr_img = qrcode.make(data)  # pixmap() 함수생성
+        qr_img.save('./Campus/Name.png')
 
-    #     img = QPixmap('./studyPython/Name.png')
-    #     self.lblQrCode.setPixmap(QPixmap(img).scaledToWidth(200))
+        img = QPixmap('./Campus/Name.png')
+        self.lblQrCode.setPixmap(QPixmap(img).scaledToWidth(200))
 
 class qtFindID(QWidget):
     def __init__(self):

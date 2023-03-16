@@ -9,9 +9,14 @@ class qtApp(QWidget):
         super().__init__()
         uic.loadUi('./Project/login.ui', self)
 
+        self.txtID.returnPressed.connect(self.txtPWReturned)
+        self.txtPW.returnPressed.connect(self.txtPWReturned)
         self.btnlogin.clicked.connect(self.btnloginClicked)
         self.btnID.clicked.connect(self.btnIDClicked)
         self.btnPW.clicked.connect(self.btnPWClicked)
+
+    def txtPWReturned(self):
+        self.btnloginClicked()
 
     def btnloginClicked(self):
         studentID = self.txtID.text()

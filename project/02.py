@@ -16,6 +16,7 @@ class qtApp(QWidget):
     def btnloginClicked(self):
         self.hide()
         self.studentCard = qtStudentCard()
+        
 
     def btnIDClicked(self):
         self.findID = qtFindID()
@@ -36,11 +37,12 @@ class qtStudentCard(QWidget):
         self.close()
 
     def btnLogoutClicked(self):
+        self.close()
         super().__init__()
-        uic.loadUi('./Project/login.ui', self)   
-        self.hide()
+        uic.loadUi('./Project/login.ui', self) 
         self.show()
 
+        
 class qtFindID(QWidget):
     def __init__(self):
        super().__init__()

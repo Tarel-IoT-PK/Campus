@@ -67,20 +67,21 @@ class qtFindID(QWidget):
         name = self.txtName.text()
         birthYear = self.txtBirthYear.text()
         result = self.lblfindID.text()
-        #major = self.txtMajor.text()
+        major = self.txtMajor.text()
 
-        if name == '' or birthYear == '' :#or major == '':
-            QMessageBox.warning(self, '주의', '이름과 생년월일을 입력하세요')
+        if name == '' or birthYear == '' or major == '':
+            QMessageBox.warning(self, '주의', '이름과 생년월일, 전공을 입력하세요')
             return
         else:
             query = '''SELECT studentID
                          FROM studenttbl
                         WHERE studentName = %s
                           AND birthday = %s
+                          AND major = %s
                         '''
         try:
             cur = self.conn.cursor()
-            cur.execute(query, (name, birthYear))
+            cur.execute(query, (name, birthYear, major))
             rows =cur.fetchall()
             self.lblfindID.setText(str(rows[0][0]))
         except:
@@ -105,8 +106,9 @@ class qtFindPW(QWidget):
     def btnfindPwClicked(self):
         PwstID = self.txtPwstID.text()
         PwBirth = self.txtPwBirth.text()
-        if PwstID == '' or PwBirth == '':
-            QMessageBox.warning(self, '주의', '이름과 생년월일을 입력하세요!')
+        PwMajor = self.txtPwMajor.text()
+        if PwstID == '' or PwBirth == '' or PwMajor == '':
+            QMessageBox.warning(self, '주의', '이름, 생년월일, 전공을 입력하세요!')
             return
         else:
             self.conn = pymysql.connect(host='210.119.12.57', user='root', password='12345',
@@ -119,14 +121,15 @@ class qtFindPW(QWidget):
                         INNER JOIN studenttbl AS s
                         ON s.studentID = l.studentID
                         AND s.studentID = %s
-                        AND birthday = %s'''
-            cur.execute(query, (PwstID, PwBirth))
+                        AND birthday = %s
+                        AND major = %s'''
+            cur.execute(query, (PwstID, PwBirth, PwMajor))
             rows = cur.fetchall()
             self.lblfindPW.setText(str(rows[0][0]))
         except:
             QMessageBox.warning(self, '주의', '없는 계정입니다')
             self.lblfindPW.setText('')
-            return          
+            return
 
     def btnPwtoHomeClicked(self):
         self.close()

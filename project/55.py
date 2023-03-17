@@ -4,9 +4,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import pymysql
 
+QRtext = ''
 
 class qtApp(QWidget):
+    
     def __init__(self):
+    
         super().__init__()
         uic.loadUi('./Project/login.ui', self)
 
@@ -15,6 +18,8 @@ class qtApp(QWidget):
         self.btnPW.clicked.connect(self.btnPWClicked)
 
     def btnloginClicked(self):
+        global QRtext
+
         self.hide()
         self.studentCard = qtStudentCard()
         

@@ -17,7 +17,7 @@
 
 - 학생증화면
 
-![학생증 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/studentcard.png?token=GHSAT0AAAAAAB6EE3SVL4XOVWOJFIDSYUI4ZAUDAKQ)
+![학생증 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/studentcard.png?token=GHSAT0AAAAAAB6EE3SVPRUU4VWJUD4UQRUGZAUDQTQ)
 
 - QR코드 텍스트 화면
 

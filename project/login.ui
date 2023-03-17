@@ -154,7 +154,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ID 찾기</string>
+    <string>학번 찾기</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnPW">

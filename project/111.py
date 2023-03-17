@@ -88,7 +88,7 @@ class qtStudentCard(QWidget):
                           FROM studenttbl
                          WHERE studentID = %s'''
         cursor.execute(query2, (studentID))
-        
+
         query = '''SELECT studentID
                         , studentName
                         , birthday

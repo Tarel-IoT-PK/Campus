@@ -20,7 +20,7 @@ class qtApp(QMainWindow):
 
     def btnSignUpClicked(self): # 회원가입 버튼 누를 경우
         # DB 정보가져오기
-        self.conn = pymysql.connect(host='localhost', user='root', password='12345',
+        self.conn = pymysql.connect(host='210.119.12.57', user='root', password='12345',
                                     db ='campusdb', charset='utf8')
         cur = self.conn.cursor()
         now = datetime.datetime.now()

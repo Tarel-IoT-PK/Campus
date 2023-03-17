@@ -5,25 +5,25 @@ from PyQt5.QtGui import *
 import pymysql
 import qrcode
 
-QRtext = ''
+QRText = ''
 
 class qtApp(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./Project/login.ui', self)
+        self.show()
 
         self.txtID.returnPressed.connect(self.txtPWReturned)
         self.txtPW.returnPressed.connect(self.txtPWReturned)
         self.btnlogin.clicked.connect(self.btnloginClicked)
         self.btnID.clicked.connect(self.btnIDClicked)
         self.btnPW.clicked.connect(self.btnPWClicked)
-        
 
     def txtPWReturned(self):
         self.btnloginClicked()
 
     def btnloginClicked(self):
-        global studentID, QRtext
+        global studentID
         studentID = self.txtID.text()
         password = self.txtPW.text()
 
@@ -72,16 +72,14 @@ class qtStudentCard(QWidget):
 
         self.btnClose.clicked.connect(self.btnCloseClicked)
         self.btnLogout.clicked.connect(self.btnLogoutClicked)
-        # self.btnlogin.clicked.connect(self.makeQRcode)
     
     def btnCloseClicked(self):
         self.close()
 
     def btnLogoutClicked(self):
-        self.close()
-        super().__init__()
-        uic.loadUi('./Project/login.ui', self) 
-        self.show()
+        self.hide()
+        self.btnLogoutClicked= qtApp()
+
 
     def initDB(self):
         self.conn = pymysql.connect(host='210.119.12.57', user='root', password='12345',
@@ -93,10 +91,10 @@ class qtStudentCard(QWidget):
                           FROM studenttbl
                          WHERE studentID = %s'''
         cursor.execute(query2, (studentID))
-        
+
         query = '''SELECT studentID
                         , studentName
-                        , birthday
+                        , major
                      FROM studenttbl
                     WHERE studentID = %s;'''  # 학번 where 절 고치기 해야함!!!
         cur.execute(query, (studentID))
@@ -105,6 +103,17 @@ class qtStudentCard(QWidget):
         # print(rows)
         self.makeTable(rows)
         self.conn.close() # 프로그램 종료할 때
+
+        qrName = self.tblstudentCard.item(0, 1).text()
+        qrstudentID = self.tblstudentCard.item(0, 0).text()
+        qrMajor = self.tblstudentCard.item(0, 2).text()
+        QRText = f'이름 : {qrName} / 학번 : {qrstudentID} / 전공 : {qrMajor}'
+        qr_img = qrcode.make(QRText)
+        qr_img.save('./project/save.png')
+
+        img = QPixmap('./project/save.png')
+        self.lblQrCode.setPixmap(QPixmap(img).scaledToWidth(215))
+        # print(qrMajor)
         
 
     def makeTable(self, rows) -> None:
@@ -132,15 +141,6 @@ class qtStudentCard(QWidget):
         self.txtName.setText(str(studentName))
         self.txtstudentID.setText(str(studentId))
         self.txtMajor.setText(str(birthday))
-
-    def makeQRcode(self):
-        global QRtext
-        QRtext = self.txtName.text(); self.txtstudentID.text(); self.txtMajor.text()
-        qr_img = qrcode.make(QRtext)  # pixmap() 함수생성
-        qr_img.save('./Campus/Name.png')
-
-        img = QPixmap('./Campus/Name.png')
-        self.lblQrCode.setPixmap(QPixmap(img).scaledToWidth(200))
 
 
 class qtFindID(QWidget):
@@ -177,6 +177,8 @@ class qtFindID(QWidget):
             cur.execute(query, (name, birthYear))
             rows =cur.fetchall()
             self.lblfindID.setText(str(rows[0][0]))
+            self.lblName.setText(f'{name} 님의 학번은 ')
+            self.label_6.setText('입니다.')
         except:
             QMessageBox.warning(self, '주의', '없는 계정입니다')
             self.lblfindID.setText('')
@@ -199,6 +201,7 @@ class qtFindPW(QWidget):
     def btnfindPwClicked(self):
         PwstID = self.txtPwstID.text()
         PwBirth = self.txtPwBirth.text()
+        name = self.txtPwName.text()
         if PwstID == '' or PwBirth == '':
             QMessageBox.warning(self, '주의', '이름과 생년월일을 입력하세요!')
             return
@@ -217,6 +220,8 @@ class qtFindPW(QWidget):
             cur.execute(query, (PwstID, PwBirth))
             rows = cur.fetchall()
             self.lblfindPW.setText(str(rows[0][0]))
+            self.lblPw.setText(f'{name} 님의 비밀번호는 ')
+            self.lblind.setText('입니다.')
         except:
             QMessageBox.warning(self, '주의', '없는 계정입니다')
             self.lblfindPW.setText('')

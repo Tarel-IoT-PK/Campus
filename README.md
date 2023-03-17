@@ -1,7 +1,7 @@
 # Campus
 
 ## Day01 (2023-03-15)
-![전체 화면들](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/AllWindow.png?token=GHSAT0AAAAAAB6EE3SUJZDMDVWXRUEUTSQ2ZAUDFTA)
+![전체 화면들](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/AllWindow.png?raw=true)
 
 ## Day02 (2023-03-16)
 - 로그인 기능 구현
@@ -13,22 +13,22 @@
 
 - 로그인화면
 
-![로그인화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/Home.png?token=GHSAT0AAAAAAB6EE3SVI5LLXJXTC4BPEGPOZAUDGHA)
+![로그인화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/Home.png?raw=true)
 
 - 학생증화면
 
-![학생증 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/studentcard.png?token=GHSAT0AAAAAAB6EE3SVPRUU4VWJUD4UQRUGZAUDQTQ)
+![학생증 화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/studentcard.png?raw=true)
 
 - QR코드 텍스트 화면
 
-<img src="https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/QRtext.jpg?token=GHSAT0AAAAAAB6EE3SUWV6T2M6UO7FMUV32ZAUDB2Q" width = "300" />
+<img src="https://github.com/Tarel-IoT-PK/Campus/blob/main/images/QRtext.jpg?raw=true" width = "300" />
 
 - ID 찾기 화면
 
-![ID찾기 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/findID.png?token=GHSAT0AAAAAAB6EE3SVILAERMHKMJKH4R2YZAUDJQQ)
+![ID찾기 화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/findID.png?raw=true)
 
 - PW 찾기 화면
 
-![PW찾기 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/findPW.png?token=GHSAT0AAAAAAB6EE3SV2C2TK7PIXENKZRCWZAUDKEA)
+![PW찾기 화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/findPW.png?raw=true)
 
 

@@ -36,7 +36,7 @@ class qtStudentCard(QWidget):
         self.btnLogout.clicked.connect(self.btnLogoutClicked)
 
         
-        self.txtName.returnPressed.connect(self.makeQRcode)
+        # self.txtName.returnPressed.connect(self.makeQRcode)
     
     def btnCloseClicked(self):
         self.close()

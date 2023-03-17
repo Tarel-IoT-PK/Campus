@@ -152,7 +152,7 @@
     <rect>
      <x>20</x>
      <y>190</y>
-     <width>101</width>
+     <width>191</width>
      <height>21</height>
     </rect>
    </property>
@@ -163,7 +163,7 @@
   <widget class="QLabel" name="lblfindID">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>70</x>
      <y>220</y>
      <width>71</width>
      <height>21</height>
@@ -179,7 +179,7 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>160</x>
      <y>220</y>
      <width>51</width>
      <height>21</height>

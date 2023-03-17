@@ -11,7 +11,6 @@ class qtApp(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./Project/login.ui', self)
-        self.show()
 
         self.txtID.returnPressed.connect(self.txtPWReturned)
         self.txtPW.returnPressed.connect(self.txtPWReturned)
@@ -77,9 +76,10 @@ class qtStudentCard(QWidget):
         self.close()
 
     def btnLogoutClicked(self):
-        self.hide()
-        self.btnLogoutClicked= qtApp()
-
+        self.close()
+        super().__init__()
+        uic.loadUi('./Project/login.ui', self) 
+        self.show()
 
     def initDB(self):
         self.conn = pymysql.connect(host='210.119.12.57', user='root', password='12345',
@@ -102,7 +102,7 @@ class qtStudentCard(QWidget):
 
         # print(rows)
         self.makeTable(rows)
-        self.conn.close() # 프로그램 종료할 때
+        self.conn.close() # 프로그램 종료할 때+
 
         qrName = self.tblstudentCard.item(0, 1).text()
         qrstudentID = self.tblstudentCard.item(0, 0).text()
@@ -114,16 +114,11 @@ class qtStudentCard(QWidget):
         img = QPixmap('./project/save.png')
         self.lblQrCode.setPixmap(QPixmap(img).scaledToWidth(215))
         # print(qrMajor)
-        
 
     def makeTable(self, rows) -> None:
         self.tblstudentCard.setColumnCount(3)  # setColumnCount -> 대소문자 구분함,,
         self.tblstudentCard.setRowCount(len(rows))
-        self.tblstudentCard.setHorizontalHeaderLabels(['학번', '이름', '생년월일'])
-        self.tblstudentCard.setColumnWidth(0,0)   # 번호 -> 숨김
-        self.tblstudentCard.setColumnWidth(1,70)  # 이름 열 사이즈 : 70
-        self.tblstudentCard.setColumnWidth(2,105) # 핸드폰 열 사이즈 : 105
-        self.tblstudentCard.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tblstudentCard.setHorizontalHeaderLabels(['학번', '이름', '학과'])
 
         for i, row in enumerate(rows):
             # row[0] ~ row[2] 까지 쓸 수 있음
@@ -161,24 +156,23 @@ class qtFindID(QWidget):
         name = self.txtName.text()
         birthYear = self.txtBirthYear.text()
         result = self.lblfindID.text()
-        #major = self.txtMajor.text()
+        major = self.txtMajor.text()
 
-        if name == '' or birthYear == '' :#or major == '':
-            QMessageBox.warning(self, '주의', '이름과 생년월일을 입력하세요')
+        if name == '' or birthYear == '' or major == '':
+            QMessageBox.warning(self, '주의', '이름과 생년월일, 전공을 입력하세요')
             return
         else:
             query = '''SELECT studentID
                          FROM studenttbl
                         WHERE studentName = %s
                           AND birthday = %s
+                          AND major = %s
                         '''
         try:
             cur = self.conn.cursor()
-            cur.execute(query, (name, birthYear))
+            cur.execute(query, (name, birthYear, major))
             rows =cur.fetchall()
             self.lblfindID.setText(str(rows[0][0]))
-            self.lblName.setText(f'{name} 님의 학번은 ')
-            self.label_6.setText('입니다.')
         except:
             QMessageBox.warning(self, '주의', '없는 계정입니다')
             self.lblfindID.setText('')
@@ -200,10 +194,11 @@ class qtFindPW(QWidget):
 
     def btnfindPwClicked(self):
         PwstID = self.txtPwstID.text()
+        PwName = self.txtPwName.text()
         PwBirth = self.txtPwBirth.text()
-        name = self.txtPwName.text()
-        if PwstID == '' or PwBirth == '':
-            QMessageBox.warning(self, '주의', '이름과 생년월일을 입력하세요!')
+        
+        if PwstID == '' or PwBirth == '' or PwName == '':
+            QMessageBox.warning(self, '주의', '학번, 생년 월일, 이름을 입력하세요!')
             return
         else:
             self.conn = pymysql.connect(host='210.119.12.57', user='root', password='12345',
@@ -216,16 +211,15 @@ class qtFindPW(QWidget):
                         INNER JOIN studenttbl AS s
                         ON s.studentID = l.studentID
                         AND s.studentID = %s
+                        AND studentName = %s
                         AND birthday = %s'''
-            cur.execute(query, (PwstID, PwBirth))
+            cur.execute(query, (PwstID, PwName, PwBirth))
             rows = cur.fetchall()
             self.lblfindPW.setText(str(rows[0][0]))
-            self.lblPw.setText(f'{name} 님의 비밀번호는 ')
-            self.lblind.setText('입니다.')
         except:
             QMessageBox.warning(self, '주의', '없는 계정입니다')
             self.lblfindPW.setText('')
-            return          
+            return
 
     def btnPwtoHomeClicked(self):
         self.close()

@@ -11,8 +11,12 @@
 ## Day03 (2023-03-17)
 - 전체 기능 완성
 
-![홈화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/Home.png?token=GHSAT0AAAAAAB6EE3SULBNYOPN4JHWG7LKGZAUC6YA)
+![로그인화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/Home.png?token=GHSAT0AAAAAAB6EE3SULBNYOPN4JHWG7LKGZAUC6YA)
 
-![로그인화면]()
+![학생증 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/studentcard.png?token=GHSAT0AAAAAAB6EE3SVL4XOVWOJFIDSYUI4ZAUDAKQ)
+
+<img src="https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/images/QRtext.jpg?token=GHSAT0AAAAAAB6EE3SUWV6T2M6UO7FMUV32ZAUDB2Q" width = "450" />
+
+![ID찾기 화면]()
 
 

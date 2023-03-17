@@ -13,7 +13,7 @@ class qtApp(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('./project/login.ui', self)
-        self.setWindowIcon(QIcon('./이미지스/login.png'))
+        self.setWindowIcon(QIcon('./images/login.png'))
         self.setWindowTitle('학생증 v0.5')
 
         # self.initDB()       # DB초기화

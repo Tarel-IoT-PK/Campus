@@ -1,7 +1,12 @@
-# Campus
+# 학생관리시스템
+![전체 화면들](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/AllWindow.png?raw=true)
 
 ## Day01 (2023-03-15)
-![전체 화면들](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/AllWindow.png?raw=true)
+- UI 디자인 (Qt Designer)
+    - 메인화면
+    - 학번 찾기
+    - 비밀번호 찾기
+    - 학생증
 
 ## Day02 (2023-03-16)
 - 로그인 기능 구현
@@ -9,7 +14,7 @@
 - ID, PW 찾기 기능 구현
 
 ## Day03 (2023-03-17)
-- 전체 기능 완성
+- 학생증, QR코드 기능 구현
 
 - 로그인화면
 
@@ -31,4 +36,10 @@
 
 ![PW찾기 화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/findPW.png?raw=true)
 
+- UI 디자인 (Qt Designer)
+    - 회원가입
 
+## Day04 (2023-03-20)
+- 회원가입 기능 구현
+    - 학번 생성
+    - 비밀번호 확인

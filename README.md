@@ -28,6 +28,9 @@
 
 <img src="https://github.com/Tarel-IoT-PK/Campus/blob/main/images/QRtext.jpg?raw=true" width = "300" />
 
+
+
+## Day04 (2023-03-20)
 - ID 찾기 화면
 
 ![ID찾기 화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/findID.png?raw=true)
@@ -38,8 +41,3 @@
 
 - UI 디자인 (Qt Designer)
     - 회원가입
-
-## Day04 (2023-03-20)
-- 회원가입 기능 구현
-    - 학번 생성
-    - 비밀번호 확인

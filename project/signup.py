@@ -26,14 +26,29 @@ class qtApp(QMainWindow):
         now = datetime.datetime.now()
 
         try:
+
+
+            majorQ = '''SELECT majorid, name
+                        FROM major'''
+            cur.execute(majorQ)
+            majorList = cur.fetchall()
+            print(str(majorList[0]))
+
+
+            # self.majorBox = QComboBox(self)
+            # for i in range(0, self.majorBox):
+            #     self.majorBox.addItem(majorQ[i])
+
             name = self.txtname.text()
             pw = self.txtpasswd.text()
-            major = self.txtmajor.text()
+            pwConfirm = self.txtpasswd.text()
+            major = self.majorBox.actions()
             phone = self.txtphone.text()
             address = self.txtaddress.text()
             gender = self.txtgender.text()
             birthday = self.txtbirthday.text()
 
+            print(major)
             Year = now.year
             studentID = int(f'{Year}0{major}00')
 

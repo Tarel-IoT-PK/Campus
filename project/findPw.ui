@@ -136,7 +136,7 @@
    <widget class="QLabel" name="findPwBirth">
     <property name="geometry">
      <rect>
-      <x>16</x>
+      <x>18</x>
       <y>80</y>
       <width>60</width>
       <height>12</height>

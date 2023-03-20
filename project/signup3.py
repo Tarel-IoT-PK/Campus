@@ -24,40 +24,38 @@ class qtApp(QMainWindow):
                                     db ='campusdb', charset='utf8')
         cur = self.conn.cursor()
         now = datetime.datetime.now()
-        
-        name = self.txtname.text()
-        pw = self.txtpasswd.text()
-        pwConfirm = self.txtpasswd_2.text()        
-        phone = self.txtphone.text()
-        address = self.txtaddress.text()
-        gender = self.txtgender.text()
-        birthday = self.txtbirthday.text()
 
         try:
-            majorQ = '''SELECT majorid, name
-                        FROM major'''
-            cur.execute(majorQ)
-            # majorList = cur.fetchall()
-            one_text = self.majorBox.currentText()
-            major = one_text[0]
-            print(one_text)
-            print(major)
-            print(type(major))
 
-            #major = self.majorBox.text()
-            # for i in range:
-            #     majorList[i] = i
-            
+
+            # majorQ = '''SELECT majorid, name
+            #             FROM major'''
+            # cur.execute(majorQ)
+            # majorList = cur.fetchall()
+            # print(str(majorList[0]))
+
+
             # self.majorBox = QComboBox(self)
             # for i in range(0, self.majorBox):
             #     self.majorBox.addItem(majorQ[i])
 
+            name = self.txtname.text()
+            pw = self.txtpasswd.text()
+            pwConfirm = self.txtpasswd_2.text()
+            major = '1'
+            phone = self.txtphone.text()
+            address = self.txtaddress.text()
+            gender = self.txtgender.text()
+            birthday = self.txtbirthday.text()
+
+            print(major)
             Year = now.year
             studentID = int(f'{Year}0{major}00')
 
             if pw != pwConfirm:
                 QMessageBox.warning(self, '주의', '비밀번호가 일치하지 않습니다.')
                 return # 진행불가 
+
 
             veri = '''SELECT studentID
                         FROM logintbl'''
@@ -80,11 +78,12 @@ class qtApp(QMainWindow):
 
             cur.execute(query_1, (studentID, name, birthday, major, phone, address, gender))
             cur.execute(query_2, (studentID, pw))
-            self.lblshowNum.setText(f'{name}의 학번은 {studentID} 입니다.')
+            self.lblshowNum.setText(f'학번: {studentID}')
 
             self.conn.commit()# 빼먹지 말 것
             self.conn.close()
 
+            
             QMessageBox.about(self, '성공', '신규 데이터 저장 성공')  
 
         except Exception as e:

@@ -3,6 +3,13 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import pymysql
+import datetime
+
+import sys 
+from PyQt5 import uic
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+import pymysql
 import qrcode
 
 QRText = ''
@@ -10,7 +17,7 @@ QRText = ''
 class qtApp(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('./Project/login.ui', self)
+        uic.loadUi('./Project/login2.ui', self)
         self.setWindowIcon(QIcon('./project/login.png'))
         self.hide()
         self.show()
@@ -20,6 +27,7 @@ class qtApp(QWidget):
         self.btnlogin.clicked.connect(self.btnloginClicked)
         self.btnID.clicked.connect(self.btnIDClicked)
         self.btnPW.clicked.connect(self.btnPWClicked)
+        # self.btnNew.clicked.connect(self.btnNewClicked)
 
     def txtPWReturned(self):
         self.btnloginClicked()
@@ -63,6 +71,9 @@ class qtApp(QWidget):
     def btnPWClicked(self):
         self.findPW = qtFindPW()
 
+    # def btnNewClicked(self):
+    #     self.findID = qtNew()
+
 
 class qtStudentCard(QWidget):
     def __init__(self):
@@ -95,14 +106,11 @@ class qtStudentCard(QWidget):
                          WHERE studentID = %s'''
         cursor.execute(query2, (studentID))
 
-        query = '''SELECT s.studentID
-                        , s.studentName
-                        , s.major
-                        , m.name
-                     FROM studenttbl AS s
-                    INNER JOIN major AS m
-                    ON s.major = m.majorid  
-                    WHERE s.studentID = %s;'''  # 학번 where 절 고치기 해야함!!!
+        query = '''SELECT studenttbl.studentID
+                        , studenttbl.studentName
+                        , major.name
+                     FROM studenttbl, major
+                    WHERE studentID = %s;'''  # 학번 where 절 고치기 해야함!!!
         cur.execute(query, (studentID))
         rows = cur.fetchall()
 
@@ -135,7 +143,7 @@ class qtStudentCard(QWidget):
             # row[0] ~ row[2] 까지 쓸 수 있음
             studentId = row[0]
             studentName = row[1]
-            birthday = row[3]
+            birthday = row[2]
             self.tblstudentCard.setItem(i, 0 , QTableWidgetItem(str(studentId)))
             self.tblstudentCard.setItem(i, 1 , QTableWidgetItem(studentName))
             self.tblstudentCard.setItem(i, 2 , QTableWidgetItem(birthday))
@@ -183,7 +191,7 @@ class qtFindID(QWidget):
         major = self.txtMajor.text()
 
         if name == '' or birthYear == '' or major == '':
-            QMessageBox.warning(self, '주의', '이름, 생년월일, 전공을 입력하세요')
+            QMessageBox.warning(self, '주의', '이름, 생년월일, 전화번호를을 입력하세요')
             return
         else:
             query = '''SELECT studentID
@@ -267,6 +275,95 @@ class qtFindPW(QWidget):
     def btnPwtoHomeClicked(self):
         self.hide()
         self.btnLogoutClicked= qtApp()
+
+class qtNew(QWidget):
+    conn = None
+    curIdx = 0
+
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('./project/signup.ui', self)
+        #self.setWindowIcon(QIcon('./studyPyQt/address-book.png')) # 아이콘
+        self.show()
+        self.setWindowTitle('새로운 학생 추가')
+
+        #버튼 시그널/슬롯함수 지정
+        self.btnSignUp.clicked.connect(self.btnSignUpClicked)
+
+    def btnSignUpClicked(self): # 회원가입 버튼 누를 경우
+        # DB 정보가져오기
+        self.conn = pymysql.connect(host='210.119.12.57', user='root', password='12345',
+                                    db ='campusdb', charset='utf8')
+        cur = self.conn.cursor()
+        now = datetime.datetime.now()
+        
+        name = self.txtname.text()
+        pw = self.txtpasswd.text()
+        pwConfirm = self.txtpasswd_2.text()        
+        phone = self.txtphone.text()
+        address = self.txtaddress.text()
+        gender = self.txtgender.text()
+        birthday = self.txtbirthday.text()
+
+        try:
+            majorQ = '''SELECT majorid, name
+                        FROM major'''
+            cur.execute(majorQ)
+            # majorList = cur.fetchall()
+            one_text = self.majorBox.currentText()
+            major = one_text[0]
+            print(one_text)
+            print(major)
+            print(type(major))
+
+            #major = self.majorBox.text()
+            # for i in range:
+            #     majorList[i] = i
+            
+            # self.majorBox = QComboBox(self)
+            # for i in range(0, self.majorBox):
+            #     self.majorBox.addItem(majorQ[i])
+
+            Year = now.year
+            studentID = int(f'{Year}0{major}00')
+
+            if pw != pwConfirm:
+                QMessageBox.warning(self, '주의', '비밀번호가 일치하지 않습니다.')
+                return # 진행불가 
+
+            veri = '''SELECT studentID
+                        FROM logintbl'''
+            cur.execute(veri)
+            rows = cur.fetchall()
+
+            for i in range(0, len(rows)):
+                if rows[i][0] == studentID:
+                    studentID += 1
+                    
+
+            if name == '' or major == '' or phone == '' or address == '' or gender == '':
+                QMessageBox.warning(self, '주의', '모든 정보를 입력하세요')
+                return # 진행불가
+            else:
+                query_1 = '''INSERT INTO studenttbl(studentID, studentName, birthday, major, phoneNum, address, gender)
+                             VALUES(%s, %s, %s, %s, %s, %s, %s)'''
+                query_2 = '''INSERT INTO logintbl(studentID, password)
+                             VALUES(%s, %s)'''
+
+            cur.execute(query_1, (studentID, name, birthday, major, phone, address, gender))
+            cur.execute(query_2, (studentID, pw))
+            self.lblshowNum.setText(f'{name}의 학번은 {studentID} 입니다.')
+
+            self.conn.commit()# 빼먹지 말 것
+            self.conn.close()
+
+            QMessageBox.about(self, '성공', '신규 데이터 저장 성공')  
+
+        except Exception as e:
+            QMessageBox.warning(self, '주의', '에러 발생, 로그 참조')
+            print(e)
+
+
 
 
 if __name__ == '__main__':

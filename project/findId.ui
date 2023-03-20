@@ -74,7 +74,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>15</x>
+      <x>16</x>
       <y>50</y>
       <width>60</width>
       <height>12</height>
@@ -111,13 +111,13 @@
     <property name="geometry">
      <rect>
       <x>17</x>
-      <y>80</y>
-      <width>60</width>
-      <height>12</height>
+      <y>76</y>
+      <width>61</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>학        과 :</string>
+     <string>전       공 :</string>
     </property>
    </widget>
   </widget>

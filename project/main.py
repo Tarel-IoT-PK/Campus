@@ -11,6 +11,8 @@ class qtApp(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./Project/login.ui', self)
+        self.setWindowIcon(QIcon('./project/login.png'))
+        self.hide()
         self.show()
 
         self.txtID.returnPressed.connect(self.txtPWReturned)
@@ -66,6 +68,7 @@ class qtStudentCard(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./Project/studentCard.ui', self)   
+        self.setWindowIcon(QIcon('./project/student.png'))
         self.show()    
 
         self.initDB() # DB 초기화
@@ -150,6 +153,7 @@ class qtFindID(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./Project/findId.ui', self)
+        self.setWindowIcon(QIcon('./project/find.png'))
         self.show()
         self.txtName.returnPressed.connect(self.txtNameReturned)
         self.txtBirthYear.returnPressed.connect(self.txtBirthYearReturned)
@@ -208,6 +212,7 @@ class qtFindPW(QWidget):
     def __init__(self):
        super().__init__()
        uic.loadUi('./Project/findPw.ui', self)
+       self.setWindowIcon(QIcon('./project/find.png'))
        self.show()  
        self.txtPwstID.setFocus()
        self.btnPwtoHome.clicked.connect(self.btnPwtoHomeClicked)

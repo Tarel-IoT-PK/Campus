@@ -82,9 +82,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>9</x>
       <y>30</y>
-      <width>50</width>
+      <width>61</width>
       <height>21</height>
      </rect>
     </property>
@@ -95,7 +95,7 @@
      </font>
     </property>
     <property name="text">
-     <string>학번</string>
+     <string>학        번</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

@@ -1,4 +1,4 @@
-# 학생관리시스템
+# 모바일 학생증
 ![전체 화면들](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/AllWindow.png?raw=true)
 
 ## Day01 (2023-03-15)

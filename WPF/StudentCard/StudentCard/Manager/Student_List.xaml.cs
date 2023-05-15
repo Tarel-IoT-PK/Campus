@@ -186,7 +186,7 @@ namespace StudentCard
                     AnimateHide = true
                 };
 
-                var result = await this.ShowMessageAsync("성공", "삭제 성공",
+                var result = await this.ShowMessageAsync("성공", "편집 완료",
                                                          MessageDialogStyle.Affirmative, mySettings);
             }
         }

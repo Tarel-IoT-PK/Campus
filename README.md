@@ -69,15 +69,12 @@
 		- 화재, 온도, 습도 관리
 		
 ![관리자 화면]
-
 (https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/Manager.gif)
 
 
 ![학생명부 관리 화면]
-
 (https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/StudentList.gif)
 
 
 ![외박 관리 화면]
-
 (https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/WhyPark_Manager.gif)

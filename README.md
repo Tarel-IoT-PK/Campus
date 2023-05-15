@@ -48,12 +48,15 @@
 	- ID 찾기
 	- 비밀번호 찾기
 	- 로그인 후 관리자, 학생 구분하기
-![PW찾기 화면](https://github.com/Tarel-IoT-PK/Campus/blob/main/images/login.gif?raw=true)
+![로그인 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/login.gif)
+
+
 	
 - 학생 화면
 	- 학번, 이름, 전공 출력하기
 	- QR코드 출력하기
 	- 외박신청
+![학생 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/studentManagement.gif)
 	
 - 관리자 화면
 	- 외박신청 관리
@@ -64,3 +67,8 @@
 		- 신규, 수정, 삭제
 	- 기숙사 모니터링
 		- 화재, 온도, 습도 관리
+![관리자 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/Manager.gif)
+
+![학생명부 관리 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/StudentList.gif)
+
+![외박 관리 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/WhyPark_Manager.gif)

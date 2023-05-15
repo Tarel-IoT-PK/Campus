@@ -67,8 +67,17 @@
 		- 신규, 수정, 삭제
 	- 기숙사 모니터링
 		- 화재, 온도, 습도 관리
-![관리자 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/Manager.gif)
+		
+![관리자 화면]
 
-![학생명부 관리 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/StudentList.gif)
+(https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/Manager.gif)
 
-![외박 관리 화면](https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/WhyPark_Manager.gif)
+
+![학생명부 관리 화면]
+
+(https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/StudentList.gif)
+
+
+![외박 관리 화면]
+
+(https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/WhyPark_Manager.gif)

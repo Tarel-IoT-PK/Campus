@@ -70,14 +70,11 @@
 	- 기숙사 모니터링
 		- 화재, 온도, 습도 관리
 		
-		
-![관리자 화면]
-(https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/Manager.gif)
+	
+<img src="https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/Manager.gif" width="700"/>	
 
 
-![학생명부 관리 화면]
-(https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/StudentList.gif)
+<img src="https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/StudentList.gif" width="700"/>	
 
 
-![외박 관리 화면]
-(https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/WhyPark_Manager.gif)
+<img src="https://raw.githubusercontent.com/Tarel-IoT-PK/Campus/main/WPF/StudentCard/images/WhyPark_Manager.gif" width="700"/>	

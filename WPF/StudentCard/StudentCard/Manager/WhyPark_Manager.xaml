@@ -8,7 +8,8 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:StudentCard"
         mc:Ignorable="d"
-        Title="ManagerSystem" Height="450" Width="700">
+        Title="ManagerSystem" Height="450" Width="700" FontFamily="NanumGothic"
+    Closing="MetroWindow_Closing" Loaded="MetroWindow_Loaded">
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
             <iconPacks:PackIconWeatherIcons Kind="Dust" Margin="5,7,0,0" Foreground="White"/>
@@ -55,7 +56,7 @@
                      InputMethod.PreferredImeConversionMode="Native"
                      KeyDown="TxtSearchStudent_KeyDown" Grid.Column="1" Grid.Row="1" Margin="0,30,0,35"/>
 
-            <Button x:Name="BtnSearchMovie" FontSize="12" VerticalAlignment="Bottom" Margin="0,30,0,20"
+            <Button x:Name="BtnSearchstd" FontSize="12" VerticalAlignment="Bottom" Margin="0,30,0,20"
                     Content="검색" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="BtnSearch_Click" Grid.Column="1" Grid.Row="1" Grid.RowSpan="1"
                     Height="30" Width="160">
             </Button>

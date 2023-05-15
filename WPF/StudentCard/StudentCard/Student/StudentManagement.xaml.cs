@@ -1,5 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using QRCoder;
+using QRCoder.Xaml;
 using StudentCard.Logics;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.HtmlControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +19,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 
 namespace StudentCard
 {
@@ -45,6 +49,19 @@ namespace StudentCard
             TxtName.Text = Commons.NAME.ToString();
             LblStudentId.Text = Commons.STUDENTID.ToString();
             LblMajor.Text = Commons.Major.ToString();
+            StsName.Content = TxtName.Text;
+            qrImage_SourceUpdated(sender, new RoutedEventArgs());
+        }
+        
+        private void qrImage_SourceUpdated(object sender, RoutedEventArgs e)
+        {
+            var QText = $" 이름 : {TxtName.Text} \n 학번 : {LblStudentId.Text} \n 전공 : {LblMajor.Text}";
+            
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(QText, QRCodeGenerator.ECCLevel.H);
+            XamlQRCode qrCode = new XamlQRCode(qrCodeData);
+            DrawingImage qrCodeAsXaml = qrCode.GetGraphic(20);
+            qrImage.Source = qrCodeAsXaml;
         }
 
         private async void MetroWindow_Closing(object sender, CancelEventArgs e)
@@ -82,5 +99,16 @@ namespace StudentCard
             this.Hide();
             Owner.Show();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var whypark = new WhyPark();
+            whypark.Owner = this;
+            whypark.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Hide();
+            whypark.ShowDialog();
+        }
+
+        
     }
 }

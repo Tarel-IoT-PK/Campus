@@ -8,7 +8,8 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:StudentCard"
     mc:Ignorable="d"
-    Title="외박신청" Height="550" Width="400">
+    Title="외박신청" Height="550" Width="400" FontFamily="NanumGothic"
+    Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -30,12 +31,12 @@
         <Label Grid.Row="1" Grid.Column="0" Content="이름 : " 
                HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center" 
                FontSize="20"/>
-        <TextBox Grid.Column="1" x:Name="TxtStudentId" 
-                 Width="180" HorizontalAlignment="Center" 
-                 VerticalAlignment="Center" FontSize="20" Height="30"/>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtStudentName" 
-                 Width="180" HorizontalAlignment="Center" 
-                 VerticalAlignment="Center" FontSize="20" Height="30"/>
+        <TextBlock Grid.Column="1" x:Name="TxtStudentId" 
+                   Width="180" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" FontSize="20" Height="30"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtStudentName" 
+                   Width="180" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" FontSize="20" Height="30"/>
         <Label Grid.Row="2" Grid.Column="0" Content="사유 : " 
                HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center"
                FontSize="20" />

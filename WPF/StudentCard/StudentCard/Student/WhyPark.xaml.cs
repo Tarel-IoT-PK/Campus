@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using MySql.Data.MySqlClient;
 using StudentCard.Logics;
 using System;
@@ -47,7 +48,15 @@ namespace StudentCard
                     cmd.Parameters.AddWithValue("@endDate", DPend.Text);
                     cmd.ExecuteNonQuery();
                     Debug.WriteLine(query);
-                    await Commons.ShowMessageAsync("저장성공", "존나축하");
+                    var set = new MetroDialogSettings
+                    {
+                        AffirmativeButtonText = "닫기",
+                        AnimateShow = true,
+                        AnimateHide = true
+                    };
+
+                    var result = await this.ShowMessageAsync("신청", "신청완료",
+                                         MessageDialogStyle.Affirmative, set);
 
 
                 }
@@ -58,5 +67,17 @@ namespace StudentCard
             }
         }
 
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            TxtStudentId.Text = Convert.ToString(Commons.STUDENTID);
+            TxtStudentName.Text = Convert.ToString(Commons.NAME);
+
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            Owner.Show();
+        }
     }
 }

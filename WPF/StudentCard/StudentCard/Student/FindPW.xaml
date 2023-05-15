@@ -8,7 +8,8 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:StudentCard"
     mc:Ignorable="d"
-    Title="비밀번호 찾기" Height="550" Width="400" Closing="MetroWindow_Closing" Loaded="MetroWindow_Loaded">
+    Title="비밀번호 찾기" Height="550" Width="400" Closing="MetroWindow_Closing" Loaded="MetroWindow_Loaded"
+    FontFamily="NanumGothic">
     <Grid Margin="20,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -41,17 +42,19 @@
                      Text="{Binding InFirstName}" x:Name="TxtStudentId"
                      mah:TextBoxHelper.Watermark="학번을 입력하세요" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     mah:TextBoxHelper.ClearTextButton="True"/>
+                     mah:TextBoxHelper.ClearTextButton="True" KeyDown="TxtStudentId_KeyDown"/>
             <TextBox Grid.Row="2" Grid.Column="1" Margin="10,10" FontSize="15" 
                      Text="{Binding InFirstName}" x:Name="TxtName"
                      mah:TextBoxHelper.Watermark="이름을 입력하세요" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"
-                     mah:TextBoxHelper.ClearTextButton="True"/>
+                     mah:TextBoxHelper.ClearTextButton="True"
+                     InputMethod.PreferredImeState="On"
+                     InputMethod.PreferredImeConversionMode="Native" KeyDown="TxtName_KeyDown"/>
             <ComboBox Grid.Row="3" Grid.Column="1" Margin="10,10" FontSize="15" 
                       Text="{Binding InFirstName}" x:Name="CboMajor"
                       mah:TextBoxHelper.Watermark="전공을 선택하세요" 
                       mah:TextBoxHelper.UseFloatingWatermark="True"
-                      mah:TextBoxHelper.ClearTextButton="True"/>
+                      mah:TextBoxHelper.ClearTextButton="True" KeyDown="CboMajor_KeyDown"/>
             <!--<TextBox Grid.Row="3" Grid.Column="1" Margin="10,10" FontSize="15" 
                      Text="{Binding InFirstName}" x:Name="TxtMajor"
                      mah:TextBoxHelper.Watermark="전공을 입력하세요" 
@@ -71,7 +74,7 @@
             <Grid Grid.Row="0" >
                 <Label Grid.Row="3" Grid.Column="0" x:Name="LblFindPw" Content="찾은 비밀번호 : " FontSize="20" Margin="10" 
                    VerticalAlignment="Center" HorizontalAlignment="Left" />
-                <TextBlock x:Name="TxbFindPW" Text="" HorizontalAlignment="Right" Width="180" Margin="20" />
+                <TextBlock x:Name="TxbFindPW" Text="" HorizontalAlignment="Right" Width="180" Margin="20" FontSize="20" VerticalAlignment="Center" />
             </Grid>
 
             <Grid Grid.Row="3" >

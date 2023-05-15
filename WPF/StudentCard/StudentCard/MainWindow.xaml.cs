@@ -75,53 +75,65 @@ namespace StudentCard
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@STUDENTID", TxtStudentId.Text);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+
+                if (reader.HasRows)
                 {
-                    Debug.WriteLine(Convert.ToInt32(reader["studentId"]));
-                    Debug.WriteLine(reader["password"].ToString());
-                    Debug.WriteLine(reader["studentname"]);
-                    Debug.WriteLine(reader["major"]);
-                    if (studentId == ((Convert.ToInt32(reader["studentId"])).ToString()) && password == ((string)reader["password"]))
+                    while (reader.Read())
                     {
-                        if (Convert.ToString(reader["major"]) == "관리자")
+                        Debug.WriteLine(Convert.ToInt32(reader["studentId"]));
+                        Debug.WriteLine(reader["password"].ToString());
+                        Debug.WriteLine(reader["studentname"]);
+                        Debug.WriteLine(reader["major"]);
+                        if (studentId == ((Convert.ToInt32(reader["studentId"])).ToString()) && password == ((string)reader["password"]))
                         {
-                            var manager = new Monitoring();
-                            manager.Owner = this;
-                            manager.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                            this.Hide();
-                            this.TxtStudentId.Text = string.Empty;
-                            this.PwbPassword.Password = string.Empty.ToString();
-                            this.TxtStudentId.Focus();
-                            manager.ShowDialog();
-                            return;
+                            if (Convert.ToString(reader["major"]) == "관리자")
+                            {
+                                var manager = new Monitoring();
+                                manager.Owner = this;
+                                manager.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                await Commons.ShowMessageAsync("로그인", "로그인 성공");
+                                this.Hide();
+                                this.TxtStudentId.Text = string.Empty;
+                                this.PwbPassword.Password = string.Empty.ToString();
+                                this.TxtStudentId.Focus();
+                                manager.ShowDialog();
+                                return;
+                            }
+                            else
+                            {
+                                Commons.STUDENTID = Convert.ToInt32(reader["studentId"]);
+                                Commons.NAME = Convert.ToString(reader["studentname"]);
+                                Commons.Major = Convert.ToString(reader["major"]);
+
+                                var studentManagement = new StudentManagement(Commons.STUDENTID, Commons.NAME);
+                                // 부모창 위치값을 자식창으로 전달
+                                studentManagement.Owner = this;
+                                studentManagement.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                                await Commons.ShowMessageAsync("로그인", "로그인 성공");
+                                this.Hide();
+                                this.TxtStudentId.Text = string.Empty;
+                                this.PwbPassword.Password = string.Empty.ToString();
+                                this.TxtStudentId.Focus();
+                                studentManagement.ShowDialog();
+                                return;
+                            }
+
+
+
                         }
                         else
                         {
-                            Commons.STUDENTID = Convert.ToInt32(reader["studentId"]);
-                            Commons.NAME = Convert.ToString(reader["studentname"]);
-                            Commons.Major = Convert.ToString(reader["major"]);
-
-                            var studentManagement = new StudentManagement(Commons.STUDENTID, Commons.NAME);
-                            // 부모창 위치값을 자식창으로 전달
-                            studentManagement.Owner = this;
-                            studentManagement.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                            this.Hide();
-                            this.TxtStudentId.Text = string.Empty;
-                            this.PwbPassword.Password = string.Empty.ToString();
-                            this.TxtStudentId.Focus();
-                            studentManagement.ShowDialog();
+                            await Commons.ShowMessageAsync("로그인", "로그인 실패");
                             return;
                         }
-                        await Commons.ShowMessageAsync("로그인", "로그인 성공");
-
-
-                    }
-                    else
-                    {
-                        await Commons.ShowMessageAsync("로그인", "로그인 실패");
-                        return;
                     }
                 }
+                else
+                {
+                    await Commons.ShowMessageAsync("로그인", "로그인 아이디가 없습니다.");
+                    return;
+                }
+                
             }
         }
 

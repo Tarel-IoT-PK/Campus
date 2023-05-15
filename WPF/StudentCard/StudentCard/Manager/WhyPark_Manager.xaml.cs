@@ -80,8 +80,17 @@ namespace StudentCard
             }
             catch (Exception ex)
             {
-                await Commons.ShowMessageAsync("오류", $"DB조회 오류 {ex.Message}");
+                var mySettings = new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "확인",
+                    AnimateShow = true,
+                    AnimateHide = true
+                };
+
+                var result = await this.ShowMessageAsync("오류", $"DB조회 오류 {ex.Message}",
+                                                         MessageDialogStyle.Affirmative, mySettings);
             }
+            
         }
 
 
@@ -89,7 +98,15 @@ namespace StudentCard
         {
             if (string.IsNullOrEmpty(TxtSearch.Text))
             {
-                await Commons.ShowMessageAsync("검색", "검색할 학생명을 입력하세요.");
+                var mySettings = new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "확인",
+                    AnimateShow = true,
+                    AnimateHide = true
+                };
+
+                var result = await this.ShowMessageAsync("검색", "검색할 학생명을 입력하세요.",
+                                                         MessageDialogStyle.Affirmative, mySettings);
                 return;
             }
             try
@@ -99,7 +116,15 @@ namespace StudentCard
             catch (Exception ex)
             {
 
-                await Commons.ShowMessageAsync("오류", $"오류발생 : {ex.Message}");
+                var mySettings = new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "확인",
+                    AnimateShow = true,
+                    AnimateHide = true
+                };
+
+                var result = await this.ShowMessageAsync("오류", $"DB조회 오류 {ex.Message}",
+                                                         MessageDialogStyle.Affirmative, mySettings);
             }
         }
 
@@ -150,7 +175,15 @@ namespace StudentCard
             }
             catch (Exception ex)
             {
-                await Commons.ShowMessageAsync("오류", $"DB조회 오류 {ex.Message}");
+                var mySettings = new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "확인",
+                    AnimateShow = true,
+                    AnimateHide = true
+                };
+
+                var result = await this.ShowMessageAsync("오류", $"DB조회 오류 {ex.Message}",
+                                                         MessageDialogStyle.Affirmative, mySettings);
             }
         }
 
@@ -228,9 +261,17 @@ namespace StudentCard
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await Commons.ShowMessageAsync("오류", $"날짜를 선택해주세요!");
+                var mySettings = new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "확인",
+                    AnimateShow = true,
+                    AnimateHide = true
+                };
+
+                var result = await this.ShowMessageAsync("오류", $"날짜를 선택해주세요",
+                                                         MessageDialogStyle.Affirmative, mySettings);
             }
         }
 
@@ -240,9 +281,9 @@ namespace StudentCard
             Owner.Show();
         }
 
-        private void MetroWindow_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            BtnReqRealtime_Click(sender, e);
         }
     }
 }

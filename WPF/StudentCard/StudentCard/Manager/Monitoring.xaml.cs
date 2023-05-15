@@ -23,8 +23,8 @@ namespace StudentCard
         {
             InitializeComponent();
 
-            Lbl_RoomTem1.Content = Lbl_RoomTem2.Content = Lbl_RoomTem3.Content = 0;
-            Lbl_RoomHum1.Content = Lbl_RoomHum2.Content = Lbl_RoomHum3.Content = 0;
+            Lbl_RoomTem1.Content = Lbl_RoomTem2.Content = Lbl_RoomTem3.Content = Lbl_RoomTem4.Content = 0;
+            Lbl_RoomHum1.Content = Lbl_RoomHum2.Content = Lbl_RoomHum3.Content = Lbl_RoomHum4.Content = 0;
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -85,6 +85,14 @@ namespace StudentCard
                             Lbl_RoomHum3.Content = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
                         });
                         break;
+
+                    case "104":
+                        this.Invoke(() =>
+                        {
+                            Lbl_RoomTem4.Content = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
+                            Lbl_RoomHum4.Content = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -96,8 +104,8 @@ namespace StudentCard
         {
             this.Invoke(() =>
             {
-                Lbl_avg_Tem.Content = (Convert.ToInt32(Lbl_RoomTem1.Content) + Convert.ToInt32(Lbl_RoomTem2.Content) + Convert.ToInt32(Lbl_RoomTem3.Content)) / 2;
-                Lbl_avg_Hum.Content = (Convert.ToInt32(Lbl_RoomHum1.Content) + Convert.ToInt32(Lbl_RoomHum2.Content) + Convert.ToInt32(Lbl_RoomTem3.Content)) / 2;
+                Lbl_avg_Tem.Content = (Convert.ToInt32(Lbl_RoomTem1.Content) + Convert.ToInt32(Lbl_RoomTem2.Content) + Convert.ToInt32(Lbl_RoomTem3.Content) + Convert.ToInt32(Lbl_RoomTem4.Content)) / 2;
+                Lbl_avg_Hum.Content = (Convert.ToInt32(Lbl_RoomHum1.Content) + Convert.ToInt32(Lbl_RoomHum2.Content) + Convert.ToInt32(Lbl_RoomHum3.Content) + Convert.ToInt32(Lbl_RoomHum4.Content)) / 2;
             });
         }
 
@@ -122,6 +130,9 @@ namespace StudentCard
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Student_List dataMiner = new Student_List();
+            dataMiner.Owner = this;
+            dataMiner.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            this.Hide();
             dataMiner.Show();
         }
 
@@ -162,7 +173,16 @@ namespace StudentCard
                     cmd.Parameters.AddWithValue("@avg_humi", Lbl_avg_Hum.Content);
                     int affectedRows = await cmd.ExecuteNonQueryAsync(); // INSERT 쿼리 실행
 
-                    await Commons.ShowMessageAsync("저장", "DB저장 성공!!");
+                    var set = new MetroDialogSettings
+                    {
+                        AffirmativeButtonText = "닫기",
+                        
+                        AnimateShow = true,
+                        AnimateHide = true
+                    };
+
+                    var result = await this.ShowMessageAsync("저장", "저장성공",
+                                         MessageDialogStyle.Affirmative, set);
 
                 }
             }
@@ -199,9 +219,29 @@ namespace StudentCard
                 {
                     MqttReceive.MQTT_CLIENT.Disconnect();
                 }
-                Process.GetCurrentProcess().Kill();     // 가장 확실
+                Process.GetCurrentProcess().Kill();
             }
+        }
+
+
+        private void MnuClose_Click(object sender, RoutedEventArgs e)
+        {
+            Process.GetCurrentProcess().Kill();
+        }
+
+        private void MnuLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Owner.Show();
+        }
+
+        private void MnuWhyParkManager_Click(object sender, RoutedEventArgs e)
+        {
+            WhyPark_Manager whyPark_Manager = new WhyPark_Manager();
+            whyPark_Manager.Owner = this;
+            whyPark_Manager.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            this.Hide();
+            whyPark_Manager.Show();
         }
     }
 }
-

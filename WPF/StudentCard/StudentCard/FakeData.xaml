@@ -7,14 +7,14 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:StudentCard"
         mc:Ignorable="d"
-        Title="FakeData" Height="450" Width="800">
-    <Grid>
-        <Label Content="주소입력" HorizontalAlignment="Left" Margin="108,98,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Tbx_MqttBrokerIp" HorizontalAlignment="Left" Margin="188,98,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="246"/>
-        <Button x:Name="Btn_Connect" Content="연결" HorizontalAlignment="Left" Margin="458,97,0,0" VerticalAlignment="Top" Click="Btn_Connect_Click"/>
+        Title="FakeData" Height="300" Width="347">
+    <Grid Margin="0,0,0,0">
+        <Label Content="주소입력" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="20,11,0,0"/>
+        <TextBox x:Name="Tbx_MqttBrokerIp" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="127.0.0.1" TextAlignment="Center" VerticalAlignment="Top" Width="154" Height="27" Margin="0,10,0,0"/>
+        <Button x:Name="Btn_Connect" Content="연결" HorizontalAlignment="Left" Margin="259,10,0,0" VerticalAlignment="Top" Click="Btn_Connect_Click" RenderTransformOrigin="-1.847,-1.809" Width="78"/>
 
 
-        <RichTextBox x:Name="Rtb_Log" Margin="46,153,224,81" VerticalScrollBarVisibility="Visible">
+        <RichTextBox x:Name="Rtb_Log" Margin="10,51,10,10" VerticalScrollBarVisibility="Visible">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>

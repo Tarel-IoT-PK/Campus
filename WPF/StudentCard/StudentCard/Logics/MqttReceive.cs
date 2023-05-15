@@ -11,10 +11,10 @@ namespace StudentCard.Logics
     {
         // 화면마다 공유할 MQTT 브로커 ip 변수
         public static string BROKERHOST { get; set; } = "127.0.0.1";
-        public static string MQTTTOPIC { get; set; } = "SmartHome/IoTData/";
-        public static string MYSQL_CONNSTRING { get; set; } = "Server=localhost;" +
+        public static string MQTTTOPIC { get; set; } = "Campus/IoTData/";
+        public static string MYSQL_CONNSTRING { get; set; } = "Server=210.119.12.57;" +
                                                 "Port=3306;" +
-                                                "Database=miniproject;" +
+                                                "Database=campusdb;" +
                                                 "Uid=root;" +
                                                 "Pwd=12345;";
 

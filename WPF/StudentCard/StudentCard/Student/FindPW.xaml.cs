@@ -47,7 +47,7 @@ namespace StudentCard
 
         private async void BtnFindPw_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtName.Text) || string.IsNullOrEmpty(TxtStudentId.Text))
+            if (string.IsNullOrEmpty(TxtName.Text) || string.IsNullOrEmpty(TxtStudentId.Text) || (CboMajor.SelectedValue == null))
             {
                 var mySettings = new MetroDialogSettings
                 {
@@ -76,15 +76,30 @@ namespace StudentCard
                     cmd.Parameters.AddWithValue("@major", CboMajor.SelectedValue.ToString());
 
                     var result = cmd.ExecuteScalar();
-                    Debug.WriteLine(result.ToString());
+                    if (result == null)
+                    {
+                        var mySettings = new MetroDialogSettings
+                        {
+                            AffirmativeButtonText = "확인",
+                            AnimateShow = true,
+                            AnimateHide = true
+                        };
 
-                    TxbFindPW.Text = result.ToString();
+                        var msgresult = await this.ShowMessageAsync("주의", "잘못된 정보 입력",
+                                                                    MessageDialogStyle.Affirmative, mySettings);
+                    }
+                    else
+                    {
+                        Debug.WriteLine(result.ToString());
+                        TxbFindPW.Text = result.ToString();
+                    }
                 }
             }
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            TxtStudentId.Focus();
             using (MySqlConnection conn = new MySqlConnection(Commons.myConnString))
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
@@ -108,6 +123,30 @@ namespace StudentCard
                 CboMajor.ItemsSource = majorName;
             }
 
+        }
+
+        private void TxtStudentId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnFindPw_Click(sender, e);
+            }
+        }
+
+        private void TxtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnFindPw_Click(sender, e);
+            }
+        }
+
+        private void CboMajor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnFindPw_Click(sender, e);
+            }
         }
     }
 }

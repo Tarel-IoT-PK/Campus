@@ -38,7 +38,7 @@ namespace StudentCard
             Owner.Show();
         }
 
-        
+
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -77,11 +77,61 @@ namespace StudentCard
                     cmd.Parameters.AddWithValue("@PhoneNum", TxtPhoneNum.Text);
 
                     var result = cmd.ExecuteScalar();
-                    Debug.WriteLine(result.ToString());
 
-                    TxbFindId.Text = result.ToString();
+                    if (result == null)
+                    {
+                        var mySettings = new MetroDialogSettings
+                        {
+                            AffirmativeButtonText = "확인",
+                            AnimateShow = true,
+                            AnimateHide = true
+                        };
+
+                        var msgresult = await this.ShowMessageAsync("주의", "잘못된 정보 입력",
+                                                                    MessageDialogStyle.Affirmative, mySettings);
+                    }
+                    else
+                    {
+                        Debug.WriteLine(result.ToString());
+                        TxbFindId.Text = result.ToString();
+                    }
+
                 }
             }
+        }
+
+        private void TxtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnFindPw_Click(sender, e);
+            }
+        }
+
+        private void TxtBirthday_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnFindPw_Click(sender, e);
+            }
+        }
+
+        private void TxtPhoneNum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnFindPw_Click(sender, e);
+            }
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            TxtName.Focus();
+        }
+
+        private void TxtName_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

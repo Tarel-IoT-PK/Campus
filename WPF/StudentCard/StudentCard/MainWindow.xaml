@@ -9,7 +9,7 @@
     xmlns:local="clr-namespace:StudentCard"
     mc:Ignorable="d"
     Title="로그인" Height="550" Width="400" Loaded="MetroWindow_Loaded"
-    WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen" FontFamily="NanumGothic">
     <Grid Margin="20,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -36,7 +36,6 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <TextBox Grid.Row="1" Grid.Column="1" Margin="10,10" FontSize="15" 
-                     Text="12345"
                      x:Name="TxtStudentId"
                      mah:TextBoxHelper.Watermark="학번을 입력하세요" 
                      mah:TextBoxHelper.UseFloatingWatermark="True"

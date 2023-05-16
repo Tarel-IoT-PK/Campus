@@ -92,6 +92,31 @@ namespace StudentCard
         // 학생편집 삭제 기능
         public async void StudentDel(object sender, RoutedEventArgs e)
         {
+
+            var mySettings = new MetroDialogSettings
+            {
+                AffirmativeButtonText = "삭제",
+                NegativeButtonText = "취소",
+                AnimateShow = true,
+                AnimateHide = true
+            };
+
+            var result = await this.ShowMessageAsync("경고", "정말로 삭제하시겠습니까?",
+                                                             MessageDialogStyle.AffirmativeAndNegative, mySettings);
+
+            if (result == MessageDialogResult.Negative)
+            {
+
+            }
+            else if (result == MessageDialogResult.Affirmative)
+            {
+                Deletefunction();
+            }
+
+
+        }
+        public async void Deletefunction()
+        {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(Commons.myConnString))
@@ -104,17 +129,17 @@ namespace StudentCard
 
                     cmd.ExecuteNonQuery();
 
-                    //var mySettings = new MetroDialogSettings
-                    //{
-                    //    AffirmativeButtonText = "확인",
-                    //    AnimateShow = true,
-                    //    AnimateHide = true
-                    //};
-
-                    //var result = await this.ShowMessageAsync("성공", "삭제 성공",
-                    //                                         MessageDialogStyle.Affirmative, mySettings);
+                    var mySettings = new MetroDialogSettings
+                    {
+                        AffirmativeButtonText = "확인",
+                        AnimateShow = true,
+                        AnimateHide = true
+                    };
+                    var result = await this.ShowMessageAsync("성공", "삭제 성공",
+                                                              MessageDialogStyle.Affirmative, mySettings);
+                    this.Close();
                 }
-                
+
             }
             catch (Exception)
             {
@@ -127,9 +152,8 @@ namespace StudentCard
                 var result = await this.ShowMessageAsync("실패", "삭제 실패",
                                                           MessageDialogStyle.Affirmative, mySettings);
             }
-                
-
         }
+
 
 
         // 학생편집 수정기능

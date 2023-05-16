@@ -132,7 +132,7 @@ namespace StudentCard
             }
         }
 
-        private async void GrdResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void GrdResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var mqttPopWin = new List_Edit();
             var studentlist = new StudentList();            
@@ -179,15 +179,7 @@ namespace StudentCard
             if (isResult == false)
             {
                 BtnSearch_Click(sender, e); // 삭제후 닫히면 조회 다시 -> 그리드 갱신
-                var mySettings = new MetroDialogSettings
-                {
-                    AffirmativeButtonText = "확인",
-                    AnimateShow = true,
-                    AnimateHide = true
-                };
-
-                var result = await this.ShowMessageAsync("성공", "편집 완료",
-                                                         MessageDialogStyle.Affirmative, mySettings);
+              
             }
         }
     }

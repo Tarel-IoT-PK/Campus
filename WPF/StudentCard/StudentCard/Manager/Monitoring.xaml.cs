@@ -23,8 +23,8 @@ namespace StudentCard
         {
             InitializeComponent();
 
-            Lbl_RoomTem1.Content = Lbl_RoomTem2.Content = Lbl_RoomTem3.Content = Lbl_RoomTem4.Content = 0;
-            Lbl_RoomHum1.Content = Lbl_RoomHum2.Content = Lbl_RoomHum3.Content = Lbl_RoomHum4.Content = 0;
+            Lbl_RoomTem1.Value = Lbl_RoomTem2.Value = Lbl_RoomTem3.Value = Lbl_RoomTem4.Value = 0;
+            Lbl_RoomHum1.Value = Lbl_RoomHum2.Value = Lbl_RoomHum3.Value = Lbl_RoomHum4.Value = 0;
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -65,32 +65,32 @@ namespace StudentCard
                     case "101":
                         this.Invoke(() =>
                         {
-                            Lbl_RoomTem1.Content = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
-                            Lbl_RoomHum1.Content = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
+                            Lbl_RoomTem1.Value = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
+                            Lbl_RoomHum1.Value = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
                         });
                         break;
 
                     case "102":
                         this.Invoke(() =>
                         {
-                            Lbl_RoomTem2.Content = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
-                            Lbl_RoomHum2.Content = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
+                            Lbl_RoomTem2.Value = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
+                            Lbl_RoomHum2.Value = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
                         });
                         break;
 
                     case "103":
                         this.Invoke(() =>
                         {
-                            Lbl_RoomTem3.Content = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
-                            Lbl_RoomHum3.Content = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
+                            Lbl_RoomTem3.Value = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
+                            Lbl_RoomHum3.Value = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
                         });
                         break;
 
                     case "104":
                         this.Invoke(() =>
                         {
-                            Lbl_RoomTem4.Content = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
-                            Lbl_RoomHum4.Content = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
+                            Lbl_RoomTem4.Value = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
+                            Lbl_RoomHum4.Value = Math.Round(Convert.ToDouble(currSensor["Humid"]), 1);
                         });
                         break;
                     default:
@@ -104,22 +104,13 @@ namespace StudentCard
         {
             this.Invoke(() =>
             {
-                Lbl_avg_Tem.Content = (Convert.ToInt32(Lbl_RoomTem1.Content) + Convert.ToInt32(Lbl_RoomTem2.Content) + Convert.ToInt32(Lbl_RoomTem3.Content) + Convert.ToInt32(Lbl_RoomTem4.Content)) / 2;
-                Lbl_avg_Hum.Content = (Convert.ToInt32(Lbl_RoomHum1.Content) + Convert.ToInt32(Lbl_RoomHum2.Content) + Convert.ToInt32(Lbl_RoomHum3.Content) + Convert.ToInt32(Lbl_RoomHum4.Content)) / 2;
+                Lbl_avg_Tem.Content = (Convert.ToInt32(Lbl_RoomTem1.Value) + Convert.ToInt32(Lbl_RoomTem2.Value) + Convert.ToInt32(Lbl_RoomTem3.Value) + Convert.ToInt32(Lbl_RoomTem4.Value)) / 2;
+                Lbl_avg_Hum.Content = (Convert.ToInt32(Lbl_RoomHum1.Value) + Convert.ToInt32(Lbl_RoomHum2.Value) + Convert.ToInt32(Lbl_RoomHum3.Value) + Convert.ToInt32(Lbl_RoomHum4.Value)) / 2;
             });
         }
 
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            /*            double width = e.NewSize.Width;
-                        Debug.WriteLine(width);
-                        // 그리드의 ColumnDefinitions 수를 조절하는 코드
-                        int newColumnCount = (int)Math.Floor(e.NewSize.Width / 200);
-                        if (newColumnCount < 1)
-                        {
-                            newColumnCount = 1;
-                        }
-                        Lbl.Content = newColumnCount;*/
         }
 
         private void Btn_Fire_Click(object sender, RoutedEventArgs e)
@@ -176,7 +167,7 @@ namespace StudentCard
                     var set = new MetroDialogSettings
                     {
                         AffirmativeButtonText = "닫기",
-                        
+
                         AnimateShow = true,
                         AnimateHide = true
                     };

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\user\Desktop\team\StudentCard_0515\StudentCard\obj\Debug\
+C:\Source\ForProject\Campus\WPF\StudentCard\StudentCard\obj\Debug\
 StudentCard
 none
 false
 DEBUG;TRACE
-C:\Users\user\Desktop\team\StudentCard_0515\StudentCard\App.xaml
+C:\Source\ForProject\Campus\WPF\StudentCard\StudentCard\App.xaml
 101935631055
 
 20-376149457
-73-1254630187
+75878413388
 FakeData.xaml;Manager\List_Edit.xaml;Student\FindID.xaml;Student\FindPW.xaml;MainWindow.xaml;Manager\Monitoring.xaml;Manager\Student_List.xaml;Student\StudentManagement.xaml;Student\WhyPark.xaml;Manager\WhyPark_Manager.xaml;
 
-False
+True
 

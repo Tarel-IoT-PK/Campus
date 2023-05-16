@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"  
         xmlns:local="clr-namespace:StudentCard"
         mc:Ignorable="d"
         Title="관리자 모드" Height="500" Width="1200" FontFamily="NanumGothic"
@@ -64,23 +65,104 @@
             <Label Grid.Row="0" Grid.Column="1" Content="101호" 
                    FontSize="16" FontWeight="Bold" x:Name="Lbl_RoomNum1"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Grid.Row="1" Grid.Column="1" Content="101호 온도" x:Name="Lbl_RoomTem1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <Label Grid.Row="2" Grid.Column="1" Content="101호 습도" x:Name="Lbl_RoomHum1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <!--<Label Grid.Row="1" Grid.Column="1" Content="101호 온도" x:Name="Lbl_RoomTem1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:Gauge Grid.Row="1" Grid.Column="1" x:Name="Lbl_RoomTem1" Margin="5"
+                       From="0" To="50" LabelsVisibility="Visible" Value="25">
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua"        Offset="0.0"/>
+                        <GradientStop Color="GreenYellow" Offset="0.5"/>
+                        <GradientStop Color="DarkOrange"  Offset="1.0"/>
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+            <!--<Label Grid.Row="2" Grid.Column="1" Content="101호 습도" x:Name="Lbl_RoomHum1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="1" x:Name="Lbl_RoomHum1" Margin="5"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="10"
+                              SectionsInnerRadius="0.7" >
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0"  ToValue="40" Fill="Yellow"/>
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow"/>
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine"/>
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+
             <Label Grid.Row="0" Grid.Column="2" Content="102호" 
                    FontSize="16" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Grid.Row="1" Grid.Column="2" Content="102호 온도" x:Name="Lbl_RoomTem2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <Label Grid.Row="2" Grid.Column="2" Content="103호 습도" x:Name="Lbl_RoomHum2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <!--<Label Grid.Row="1" Grid.Column="2" Content="102호 온도" x:Name="Lbl_RoomTem2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:Gauge Grid.Row="1" Grid.Column="2" x:Name="Lbl_RoomTem2" Margin="5"
+                       From="0" To="50" LabelsVisibility="Visible" Value="25">
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua"        Offset="0.0"/>
+                        <GradientStop Color="GreenYellow" Offset="0.5"/>
+                        <GradientStop Color="DarkOrange"  Offset="1.0"/>
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+            <!--<Label Grid.Row="2" Grid.Column="2" Content="102호 습도" x:Name="Lbl_RoomHum2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="2" x:Name="Lbl_RoomHum2" Margin="5"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="10"
+                              SectionsInnerRadius="0.7" >
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0"  ToValue="40" Fill="Yellow"/>
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow"/>
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine"/>
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
             <Label Grid.Row="0" Grid.Column="3" Content="103호" 
                    FontSize="16" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Grid.Row="1" Grid.Column="3" Content="103호 온도" x:Name="Lbl_RoomTem3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <Label Grid.Row="2" Grid.Column="3" Content="103호 습도" x:Name="Lbl_RoomHum3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <!--<Label Grid.Row="1" Grid.Column="3" Content="103호 온도" x:Name="Lbl_RoomTem3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:Gauge Grid.Row="1" Grid.Column="3" x:Name="Lbl_RoomTem3" Margin="5"
+                       From="0" To="50" LabelsVisibility="Visible" Value="25">
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua"        Offset="0.0"/>
+                        <GradientStop Color="GreenYellow" Offset="0.5"/>
+                        <GradientStop Color="DarkOrange"  Offset="1.0"/>
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+            <!--<Label Grid.Row="2" Grid.Column="3" Content="103호 습도" x:Name="Lbl_RoomHum3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="3" x:Name="Lbl_RoomHum3" Margin="5"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="10"
+                              SectionsInnerRadius="0.7" >
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0"  ToValue="40" Fill="Yellow"/>
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow"/>
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine"/>
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+
+
             <Label Grid.Row="0" Grid.Column="4" Content="104호" 
                    FontSize="16" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Grid.Row="1" Grid.Column="4" Content="104호 온도" x:Name="Lbl_RoomTem4" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <Label Grid.Row="2" Grid.Column="4" Content="104호 습도" x:Name="Lbl_RoomHum4" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <!--<Label Grid.Row="1" Grid.Column="4" Content="104호 온도" x:Name="Lbl_RoomTem4" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:Gauge Grid.Row="1" Grid.Column="4" x:Name="Lbl_RoomTem4" Margin="5"
+                       From="0" To="50" LabelsVisibility="Visible" Value="25">
+                <lvc:Gauge.GaugeActiveFill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Aqua"        Offset="0.0"/>
+                        <GradientStop Color="GreenYellow" Offset="0.5"/>
+                        <GradientStop Color="DarkOrange"  Offset="1.0"/>
+                    </LinearGradientBrush>
+                </lvc:Gauge.GaugeActiveFill>
+            </lvc:Gauge>
+            <!--<Label Grid.Row="2" Grid.Column="4" Content="104호 습도" x:Name="Lbl_RoomHum4" HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+            <lvc:AngularGauge Grid.Row="2" Grid.Column="4" x:Name="Lbl_RoomHum4" Margin="5"
+                              FromValue="0" ToValue="90" LabelsStep="10" Value="10"
+                              SectionsInnerRadius="0.7" >
+                <lvc:AngularGauge.Sections>
+                    <lvc:AngularSection FromValue="0"  ToValue="40" Fill="Yellow"/>
+                    <lvc:AngularSection FromValue="40" ToValue="60" Fill="GreenYellow"/>
+                    <lvc:AngularSection FromValue="60" ToValue="90" Fill="Aquamarine"/>
+                </lvc:AngularGauge.Sections>
+            </lvc:AngularGauge>
+
+
             <Label Grid.Row="1" Grid.Column="0" Content="Temp(℃)"
                    FontSize="16" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center">

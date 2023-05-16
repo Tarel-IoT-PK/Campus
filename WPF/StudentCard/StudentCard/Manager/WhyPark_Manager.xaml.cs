@@ -261,7 +261,7 @@ namespace StudentCard
 
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 var mySettings = new MetroDialogSettings
                 {

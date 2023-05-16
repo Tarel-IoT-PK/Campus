@@ -9,7 +9,7 @@
     xmlns:local="clr-namespace:StudentCard"
     mc:Ignorable="d"
     Title="학생증" Height="550" Width="400" FontFamily="NanumGothic"
-    WindowStartupLocation="CenterScreen" Loaded="MetroWindow_Loaded">
+    WindowStartupLocation="CenterScreen" Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
 
     <Grid>
         <Grid.RowDefinitions>

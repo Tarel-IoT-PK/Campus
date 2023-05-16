@@ -23,42 +23,61 @@ namespace StudentCard
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Commons.myConnString))
+                DateTime? startDate = DPstart.SelectedDate;
+                DateTime? endDate = DPend.SelectedDate;
+
+                if (startDate.HasValue && endDate.HasValue)
                 {
-                    if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
-
-                    var query = @"INSERT INTO managertbl
-                                            (studentID,
-                                            studentName,
-                                            reason,
-                                            startDate,
-                                            endDate)
-                                            VALUES
-                                            (@studentID,
-                                            @studentName,
-                                            @reason,
-                                            @startDate,
-                                            @endDate);";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@studentID", TxtStudentId.Text);
-                    cmd.Parameters.AddWithValue("@studentName", TxtStudentName.Text);
-                    cmd.Parameters.AddWithValue("@reason", TxtReason.Text);
-                    cmd.Parameters.AddWithValue("@startDate", DPstart.Text);
-                    cmd.Parameters.AddWithValue("@endDate", DPend.Text);
-                    cmd.ExecuteNonQuery();
-                    Debug.WriteLine(query);
-                    var set = new MetroDialogSettings
+                    if (startDate.Value > endDate.Value)
                     {
-                        AffirmativeButtonText = "닫기",
-                        AnimateShow = true,
-                        AnimateHide = true
-                    };
+                        var mySettings = new MetroDialogSettings
+                        {
+                            AffirmativeButtonText = "확인",
+                            AnimateShow = true,
+                            AnimateHide = true
+                        };
 
-                    var result = await this.ShowMessageAsync("신청", "신청완료",
-                                         MessageDialogStyle.Affirmative, set);
+                        var result = await this.ShowMessageAsync("날짜선택", "날짜를 올바르게 설정해 주세요.");
+                    }
 
+                    else
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(Commons.myConnString))
+                        {
+                            if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
 
+                            var query = @"INSERT INTO managertbl
+                                                    (studentID,
+                                                    studentName,
+                                                    reason,
+                                                    startDate,
+                                                    endDate)
+                                                    VALUES
+                                                    (@studentID,
+                                                    @studentName,
+                                                    @reason,
+                                                    @startDate,
+                                                    @endDate);";
+
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@studentID", TxtStudentId.Text);
+                            cmd.Parameters.AddWithValue("@studentName", TxtStudentName.Text);
+                            cmd.Parameters.AddWithValue("@reason", TxtReason.Text);
+                            cmd.Parameters.AddWithValue("@startDate", DPstart.Text);
+                            cmd.Parameters.AddWithValue("@endDate", DPend.Text);
+                            cmd.ExecuteNonQuery();
+                            Debug.WriteLine(query);
+                            var set = new MetroDialogSettings
+                            {
+                                AffirmativeButtonText = "닫기",
+                                AnimateShow = true,
+                                AnimateHide = true
+                            };
+
+                            var result = await this.ShowMessageAsync("신청", "신청완료",
+                                                 MessageDialogStyle.Affirmative, set);
+                        }
+                    }
                 }
             }
             catch (Exception ex)

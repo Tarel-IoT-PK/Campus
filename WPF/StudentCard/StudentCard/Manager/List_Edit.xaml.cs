@@ -252,31 +252,7 @@ namespace StudentCard
                                             MessageDialogStyle.Affirmative, set);
                     return;
                 }
-                //else if (birthday == "")
-                //{
-                //    MessageBox.Show("생년월일을 입력하세요!!", "생년월일 입력 오류");
-                //    return;
-                //}
-                //else if (major == "-1")
-                //{
-                //    MessageBox.Show("전공를 선택하세요!!", "전공 선택 오류");
-                //    return;
-                //}
-                //else if (PhoneNum == "")
-                //{
-                //    MessageBox.Show("전화번호를 입력하세요!!", "전화번호 입력 오류");
-                //    return;
-                //}
-                //else if (address == "")
-                //{
-                //    MessageBox.Show("주소를 입력하세요!!", "주소 입력 오류");
-                //    return;
-                //}
-                //else if (gender == "")
-                //{
-                //    MessageBox.Show("성별을 선택하세요!!", "성별 선택 오류");
-                //    return;
-                //}
+               
 
             }
             catch
